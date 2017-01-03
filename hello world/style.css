@@ -1,0 +1,18 @@
+html, body, input {
+    		font-size: 1.05em !important;
+		}
+.navbar {
+    		margin-bottom: 0%;
+		}
+.navbar-header {
+    		font-size: 1.2em;
+    		color:  #000000;
+    		padding-top: 15px;
+    		padding-bottom: 15px;
+		}
+.home	{
+			margin-top: 10%;
+		}
+#main 	{
+			font-size: 2em;
+		}
