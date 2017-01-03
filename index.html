@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="TaskManager">
+<head>
+    <title>AngularJS Todo Example</title>
+    <meta charset="UTF-8">
+    <meta http-equi="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap: Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.angularjs.org/1.4.7/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">AngularJS Example</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div>
+        <div class="container">
+            <div class="content" ng-controller="taskController">
+                <h1>To-do List App</h1>
+                <p class="tagline">By Sravan Reddy</p>
+                <form>
+                    <div class="inputContainer">
+                        <input type="text" id="description" class="taskName" placeholder="What do you need to do?" ng-model="newTask">
+                        <label for="description">Description</label>
+                    </div>
+                    <div class="inputContainer half last"> <i class="fa fa-caret-down selectArrow"></i>
+                        <select id="category" class="taskCategory" ng-model="newTaskCategory" ng-options="obj.name for obj in categories">
+                            <option class="disabled" value="">Choose a category</option>
+                        </select>
+                        <label for="category">Category</label>
+                    </div>
+                    <div class="inputContainer half last right">
+                        <input type="date" id="dueDate" class="taskDate" ng-model="newTaskDate">
+                        <label for="dueDate">Due Date</label>
+                    </div>
+                    <div class="row">
+                        <button class="taskAdd" ng-click="addNew()"><i class="fa fa-plus icon"></i>Add task</button>
+                        <button class="taskDelete" ng-click="deleteTask()"><i class="fa fa-trash-o icon"></i>Delete Tasks</button>
+                    </div>
+                </form>
+                <ul  class="taskList">
+                    <li class="taskItem" ng-repeat="taskItem in taskItem track by $index" ng-model="taskItem">
+                        <input type="checkbox" class="taskCheckbox" ng-model="taskItem.complete" ng-change="save()">
+                        <span class="complete-{{taskItem.complete}}">{{taskItem.description}}</span> <span class="category-{{taskItem.category}}">{{taskItem.category}}</span> <strong class="taskDate complete-{{taskItem.complete}}"><i class="fa fa-calendar"></i>{{taskItem.date | date : 'mediumDate'}}</strong> </li>
+                </ul>
+                <!-- taskList -->
+            </div>
+
+
+        <!-- container -->
+    </div>
+</body>
+</html>
